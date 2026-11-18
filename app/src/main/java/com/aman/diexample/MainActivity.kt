@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.aman.diexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        viewModel = QuoteViewModel()
+        val repo = QuoteRepository()
+
+        val factory  = QuoteViewModelFactory(repo)
+
+        viewModel = ViewModelProvider(this, factory)[QuoteViewModel::class.java]
 
         binding.btnQuote.setOnClickListener {
             viewModel.updateQuote()
