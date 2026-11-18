@@ -14,4 +14,17 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun getQuote_returnsExpectedQuote(){
+        val repo = FakeRepository()
+
+        val viewModel = QuoteViewModel(repo)
+        viewModel.updateQuote()
+
+        assertEquals(
+            "Fake Repository for Testing",
+            viewModel.quote.value
+        )
+    }
 }

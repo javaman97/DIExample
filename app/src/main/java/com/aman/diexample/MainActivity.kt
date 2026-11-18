@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val repo = QuoteRepository()
+        val repo: QuoteRepository = QuoteRepoImpl()
 
         val factory  = QuoteViewModelFactory(repo)
 
