@@ -1,7 +1,8 @@
-package com.aman.diexample
+package com.aman.diexample.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.aman.diexample.repository.QuoteRepository
 
 /*
 The default ViewModel factory doesn't know how to create QuoteRepository and pass it into the constructor.
