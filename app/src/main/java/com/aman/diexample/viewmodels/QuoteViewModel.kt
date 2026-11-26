@@ -8,9 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.aman.diexample.model.Quote
 import com.aman.diexample.model.QuoteResponse
 import com.aman.diexample.repository.QuoteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class QuoteViewModel(
+@HiltViewModel
+class QuoteViewModel @Inject constructor(
     private val quoteRepo: QuoteRepository
 ) : ViewModel() {
 

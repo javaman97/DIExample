@@ -3,19 +3,18 @@ package com.aman.diexample
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.aman.diexample.databinding.ActivityMainBinding
-import com.aman.diexample.repository.QuoteRepoImpl
-import com.aman.diexample.repository.QuoteRepository
 import com.aman.diexample.viewmodels.QuoteViewModel
-import com.aman.diexample.viewmodels.QuoteViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: QuoteViewModel
+    private val viewModel: QuoteViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,15 +26,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val apiService = RetrofitClient.apiService
-
-        val repo: QuoteRepository = QuoteRepoImpl(apiService)
-
-        val factory  = QuoteViewModelFactory(repo)
-
-        viewModel = ViewModelProvider(this, factory)[QuoteViewModel::class.java]
-
-       viewModel.getQuotes()
+        binding.btnQuote.setOnClickListener {
+            viewModel.getQuotes()
+        }
 
             viewModel.response.observe(this){
                 binding.txtQuote.text = it.toString()
