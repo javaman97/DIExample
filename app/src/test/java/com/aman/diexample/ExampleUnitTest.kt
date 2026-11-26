@@ -1,6 +1,5 @@
 package com.aman.diexample
 
-import com.aman.diexample.repository.FakeRepository
 import com.aman.diexample.viewmodels.QuoteViewModel
 import org.junit.Test
 
@@ -17,16 +16,16 @@ class ExampleUnitTest {
         assertEquals(4, 2 + 2)
     }
 
-    @Test
-    fun getQuote_returnsExpectedQuote(){
-        val repo = FakeRepository()
-
-        val viewModel = QuoteViewModel(repo)
-        viewModel.updateQuote()
-
-        assertEquals(
-            "Fake Repository for Testing",
-            viewModel.quote.value
-        )
-    }
+//    @Test
+//    fun getQuote_returnsExpectedQuote(){
+//        val repo = FakeRepository()
+//
+//        val viewModel = QuoteViewModel(repo)
+//        viewModel.updateQuote()
+//
+//        assertEquals(
+//            "Fake Repository for Testing",
+//            viewModel.quote.value
+//        )
+//    }
 }

@@ -1,6 +1,5 @@
-package com.aman.diexample
+package com.aman.diexample.api
 
-import com.aman.diexample.api.QuoteApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
